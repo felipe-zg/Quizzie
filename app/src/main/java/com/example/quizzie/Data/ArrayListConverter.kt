@@ -2,17 +2,21 @@ package com.example.quizzie.Data
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
+inline fun <reified T> Gson.fromJson(json: String) =
+    fromJson<T>(json, object : TypeToken<T>() {}.type)
 
 class ArrayListConverter {
     @TypeConverter
-    fun fromAnswerArrayList(value: ArrayList<Answer>): String {
+    fun fromAnswerList(value: List<Answer>): String {
         return Gson().toJson(value)
     }
 
     @TypeConverter
-    fun toAnswerArrayList(value: Answer): ArrayList<Answer> {
+    fun toAnswerList(value: Answer): List<Answer> {
         return try {
-            Gson().fromJson<ArrayList<Answer>>(value) //using extension function
+            Gson().fromJson<List<Answer>>(value.toString())
         } catch (e: Exception) {
             arrayListOf()
         }
