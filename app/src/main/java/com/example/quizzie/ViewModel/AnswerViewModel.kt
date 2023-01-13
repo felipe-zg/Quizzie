@@ -4,11 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.quizzie.Data.Answer
-import com.example.quizzie.Data.QuestionItem
 import com.example.quizzie.Data.QuizzieDatabase
-import com.example.quizzie.Data.Repository.AnswerRepository
-import com.example.quizzie.Data.Repository.QuestionRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

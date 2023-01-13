@@ -8,6 +8,9 @@ data class QuestionItem(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     var question: String,
-    var answerOptions: List<Answer>,
-    var corretAnswerId: Int,
+    var answerOption1: String,
+    var answerOption2: String,
+    var answerOption3: String,
+    var answerOption4: String,
+    var corretAnswer: String,
 )

@@ -4,15 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.quizzie.Data.DAOs.AnswerDao
 import com.example.quizzie.Data.DAOs.QuestionDao
 
-@Database(entities = [QuestionItem::class, Answer::class], version = 0, exportSchema = false)
+@Database(entities = [QuestionItem::class], version = 0, exportSchema = false)
 abstract class QuizzieDatabase: RoomDatabase() {
 
     abstract fun questionDao(): QuestionDao
-
-    abstract fun answerDao(): AnswerDao
 
    companion object {
        @Volatile
