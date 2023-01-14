@@ -11,12 +11,22 @@ fun SetupNavGraph(
 ){
     NavHost(
         navController = navController,
-        startDestination = Screen.Quiz.route
+        startDestination = Screen.Home.route
     ){
         composable(
             route = Screen.Quiz.route
         ) {
-            QuizScreen()
+            QuizScreen(navController)
+        }
+        composable(
+            route = Screen.Result.route
+        ) {
+            ResultScreen(navController)
+        }
+        composable(
+            route = Screen.Home.route
+        ) {
+            HomeScreen(navController)
         }
     }
 }
