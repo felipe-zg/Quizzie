@@ -8,18 +8,22 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.quizzie.Helpers.QuizzieDatabaseHelper
 import com.example.quizzie.Models.QuestionItem
 
 @Composable
 fun RadioButtonQuestion(question: QuestionItem) {
     val radioOptions = question.answerOptions
     val (selectedOption, onOptionSelected) = remember { mutableStateOf(0) }
+
+    fun handleAnswer(id: Int) {
+        onOptionSelected(id)
+        question.handleAnswer(id)
+    }
 
     Column {
         Text(
@@ -41,8 +45,8 @@ fun RadioButtonQuestion(question: QuestionItem) {
             ) {
 
                 RadioButton(
-                    selected = (answer.id == selectedOption),
-                    onClick = { onOptionSelected(answer.id) }
+                    selected = (answer.id == selectedOption && question.selectedOptionId == selectedOption),
+                    onClick = { handleAnswer(answer.id) }
                 )
                 Text(
                     text = answer.text,
